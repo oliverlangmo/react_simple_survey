@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+var uuid = require('uuid');
+var firebase = require('firebase');
+
+var config = {
+    apiKey: "AIzaSyD6AcZxinBev5oY-6lkoN8uRwAPQB2duyc",
+    authDomain: "simplesurveydb.firebaseapp.com",
+    databaseURL: "https://simplesurveydb.firebaseio.com",
+    storageBucket: "simplesurveydb.appspot.com",
+    messagingSenderId: "135562005149"
+  };
+  firebase.initializeApp(config);
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      id:'',
+      id:uuid.v1(),
       name:'',
       answers:{
       q1:'',
@@ -26,6 +37,14 @@ this.setState({name:name}, function(){
 }
 handleQuestionSubmit(event){
 
+firebase.database().ref('surveys/'+this.state.id).set({
+  name: this.state.name,
+  answers: this.state.answers
+});
+this.setState({submitted:true}, function(){
+console.log('questions submitted ---');
+})
+event.preventDefault();
 }
 handleQuestionChange(event){
  var answers = this.state.answers;
@@ -82,6 +101,7 @@ console.log(this.state);
                           <input type='radio' name='q4' value='ARM' onChange={this.handleQuestionChange} />ARM <br />
                           <input type='radio' name='q4' value='Other' onChange={this.handleQuestionChange} />Other <br />
                         </div>
+                        <input type="submit" value="Submit" />
                       </form>
                   </span>
     } else if (!this.state.name && this.state.submitted ===false) {
@@ -93,7 +113,7 @@ console.log(this.state);
               </span>;
         questions='';
         } else if (this.state.submitted === true){
-
+          user = <h2>Thank You {this.state.name}! You've been very helpful!</h2>
         }
     return (
       <div className="App">
