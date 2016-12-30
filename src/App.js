@@ -76,11 +76,11 @@ console.log(this.state);
                         </div>
                         <div>
                           <label>What is your favorite CPU Brand?</label><br />
-                          <input type='radio' name='q1' value='Intel' onChange={this.handleQuestionChange} />Intel <br />
-                          <input type='radio' name='q1' value='AMD' onChange={this.handleQuestionChange} />AMD <br />
-                          <input type='radio' name='q1' value='Nvidia' onChange={this.handleQuestionChange} />Nvidia <br />
-                          <input type='radio' name='q1' value='ARM' onChange={this.handleQuestionChange} />ARM <br />
-                          <input type='radio' name='q1' value='Other' onChange={this.handleQuestionChange} />Other <br />
+                          <input type='radio' name='q4' value='Intel' onChange={this.handleQuestionChange} />Intel <br />
+                          <input type='radio' name='q4' value='AMD' onChange={this.handleQuestionChange} />AMD <br />
+                          <input type='radio' name='q4' value='Nvidia' onChange={this.handleQuestionChange} />Nvidia <br />
+                          <input type='radio' name='q4' value='ARM' onChange={this.handleQuestionChange} />ARM <br />
+                          <input type='radio' name='q4' value='Other' onChange={this.handleQuestionChange} />Other <br />
                         </div>
                       </form>
                   </span>
